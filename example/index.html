@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>sequential-shots</title>
+    </head>
+    <body class="content">
+        <header tabindex="0" class="header">
+            <h1 class="header__title">sequential shots</h1>
+            <p class="header__subtitle item" role="doc-subtitle">A vanilla javascript web component.</p>
+
+            <hr class="header__separator" />
+        </header>
+
+        <main class="main">
+            <section tabindex="0" class="section">
+                <h2 class="section__title">Usage</h2>
+                <p class="item">
+                    Just put the images and videos in the
+                    <code class="contrast-bold">&lt;sequential-shots&gt;</code>
+                    tag and you've got it.
+                </p>
+
+                <sequential-shots class="story item rounded">
+                    <img
+                        src="media/de niro.jpg"
+                        height="400px"
+                        alt="de niro in the 90s"
+                        aria-label="de niro in the 90s"
+                    />
+                    <img src="media/cartoon.gif" height="400px" alt="cat + chicken = happy cat" />
+                    <video
+                        src="media/not a golfer.mp4"
+                        height="400px"
+                        aria-label="obviously, you're not a golfer."
+                        loop
+                        autoplay
+                        playsinline
+                        muted
+                    ></video>
+                </sequential-shots>
+            </section>
+
+            <section tabindex="0" class="section">
+                <h2 class="section__title">Accessibility</h2>
+
+                <p class="item">
+                    The component accessible from the keyboard (arrow keys and M key to switch sound). You can focus it
+                    by clicking on it or using the tab key. It also supports versions with higher contrast and reduced
+                    motion.
+                </p>
+            </section>
+
+            <section tabindex="0" class="section section--hide-separator">
+                <h2 class="section__title">Installation</h2>
+
+                <div class="item">
+                    <p>
+                        If you want to try it, just copy
+                        <a
+                            href="https://github.com/dmkskn/sequential-shots/blob/main/dist/sequential-shots.js"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >this</a
+                        >
+                        script into your project or install it with npm:
+                    </p>
+
+                    <p class="code center">
+                        <code class="contrast-bold">npm install dmkskn/sequential-shots</code>
+                    </p>
+
+                    <p>
+                        It's already working fine, but keep in mind that development is still ongoing. Things can
+                        change.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <hr class="footer__separator" />
+            <div class="footer__container">
+                <section tabindex="0" class="links">
+                    <h3 class="links__title">Links</h3>
+                    <ul class="links__list">
+                        <li class="links__item">
+                            <a
+                                href="http://github.com/dmkskn/sequential-shots"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Github
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section tabindex="0" class="copyright">
+                    <h3 class="copyright__title">Developer</h3>
+                    <span>
+                        Made by <a href="https://dmkskn.com" target="_blank" rel="noopener noreferrer">Dima Koskin</a>
+                    </span>
+                </section>
+            </div>
+        </footer>
+
+        <script src="sequential-shots.js" defer></script>
+    </body>
+</html>

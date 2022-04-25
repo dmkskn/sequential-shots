@@ -1,0 +1,232 @@
+<style>
+    :host,
+    :host * {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    :host {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    #wrapper {
+        position: relative;
+        overflow: hidden;
+
+        width: 100%;
+        height: 100%;
+
+        contain: content;
+        cursor: pointer;
+    }
+
+    #wrapper.no-css {
+        position: unset;
+        overflow: unset;
+        width: unset;
+        height: unset;
+    }
+
+    #wrapper.no-css > #height {
+        padding-bottom: 100%;
+    }
+
+    #content {
+        display: flex;
+        align-items: stretch;
+
+        width: 100%;
+        height: 100%;
+
+        will-change: transform;
+        transition: transform 0.25s ease-out;
+    }
+
+    #wrapper.no-css > #content {
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #content {
+            transition: none;
+        }
+    }
+
+    #label {
+        -webkit-font-smoothing: antialiased;
+
+        display: inline;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        margin: 0;
+        padding: 0;
+        background-color: rgba(0, 0, 0, 0.45);
+        border: 0.5px solid rgba(255, 255, 255, 0.15);
+        padding: 0.33em 0.66em;
+        line-height: 1.5;
+        border-radius: 1em;
+        letter-spacing: 0.1em;
+
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+            'Helvetica Neue', sans-serif;
+        font-weight: 400;
+        font-size: 10px;
+        color: white;
+
+        z-index: 1;
+
+        pointer-events: none;
+    }
+
+    @media screen and (prefers-contrast: more) {
+        #label {
+            font-weight: 600;
+            background-color: rgba(0, 0, 0, 1);
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+    }
+
+    #sound-button {
+        -webkit-font-smoothing: antialiased;
+
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+
+        -webkit-appearance: none;
+        appearance: none;
+        background: 0;
+        border: 0;
+
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.45);
+        border: 0.5px solid rgba(255, 255, 255, 0.15);
+        padding: 0.33em 0.66em;
+        line-height: 1.5;
+        border-radius: 1em;
+        letter-spacing: 0.05em;
+
+        z-index: 1;
+
+        cursor: pointer;
+    }
+
+    #sound-button:disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    @media (hover: hover) {
+        #sound-button:hover {
+            background-color: rgba(35, 35, 35, 0.45);
+        }
+    }
+
+    @media screen and (prefers-contrast: more) {
+        #sound-button {
+            font-weight: 600;
+            background-color: rgba(0, 0, 0, 1);
+            border: 0.5px solid rgba(255, 255, 255, 1);
+        }
+    }
+
+    @media screen and (hover: hover) and (prefers-contrast: more) {
+        #sound-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+            color: black;
+            border: 1px solid black;
+        }
+    }
+
+    #sound-button:active {
+        background-color: rgba(15, 15, 15, 0.45);
+    }
+
+    #sound-button::before {
+        display: inline-block;
+        content: '';
+
+        width: 6px;
+        height: 6px;
+
+        background-color: #808080;
+        border: 0.5px solid rgba(255, 255, 255, 0.25);
+        border-radius: 100%;
+        margin-right: 0.45em;
+    }
+
+    #sound-button.unmuted::before {
+        background-color: #77b900;
+    }
+
+    @media screen and (prefers-contrast: more) {
+        #sound-button::before {
+            border: 0.5px solid white;
+        }
+    }
+
+    @media screen and (hover: hover) and (prefers-contrast: more) {
+        #sound-button:hover::before {
+            border: 0.5px solid black;
+        }
+    }
+
+    ::slotted(*) {
+        overflow: hidden;
+
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 100%;
+
+        height: 100%;
+    }
+
+    ::slotted(video) {
+        display: block;
+        object-fit: cover;
+    }
+
+    ::slotted(img) {
+        display: block;
+        object-fit: cover;
+    }
+
+    ::slotted(article) {
+        position: relative;
+    }
+
+    #wrapper.no-css > ::slotted(video) {
+        display: unset;
+    }
+
+    #wrapper.no-css > ::slotted(img) {
+        display: unset;
+    }
+</style>
+
+<section id="wrapper">
+    <div id="height"></div>
+
+    <h2 id="label" hidden></h2>
+
+    <div id="content">
+        <slot id="slot"></slot>
+    </div>
+
+    <div id="controls" hidden>
+        <button id="sound-button">Sound</button>
+    </div>
+</section>
